@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>백남준 | 우체국FC 디지털명함</title>
+
+  <!-- KakaoTalk / SNS 미리보기용 Open Graph -->
+  <meta property="og:title" content="백남준 | 우체국FC" />
+  <meta property="og:description" content="우체국 보험, 예금 상담 | 장흥읍 대대로939" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="og-card.png" />
+  <meta name="robots" content="noindex" />
+
+  <style>
+    :root{
+      --red:#c90000;
+      --deep-red:#9f0000;
+      --light-red:#fff1f1;
+      --ink:#181818;
+      --muted:#666;
+      --line:#eeeeee;
+      --green:#14a645;
+      --blue:#1976d2;
+      --shadow:0 12px 30px rgba(0,0,0,.12);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",Arial,sans-serif;
+      background:#f2f3f5;
+      color:var(--ink);
+    }
+
+    .phone{
+      max-width:430px;
+      min-height:100vh;
+      margin:0 auto;
+      background:#fff;
+      box-shadow:0 0 30px rgba(0,0,0,.08);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero{
+      min-height:290px;
+      padding:28px 24px 120px;
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.15),rgba(255,255,255,.95)),
+        radial-gradient(circle at 88% 18%,rgba(201,0,0,.16),transparent 26%),
+        linear-gradient(135deg,#ffffff 0%,#eff7ff 50%,#ffffff 100%);
+      position:relative;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      color:var(--red);
+      letter-spacing:-.5px;
+    }
+
+    .brand-mark{
+      width:34px;height:22px;
+      background:linear-gradient(135deg,var(--red),#ff5b33);
+      clip-path:polygon(0 0,100% 0,65% 50%,100% 100%,0 100%,32% 50%);
+      border-radius:3px;
+    }
+
+    .slogan{
+      margin-top:34px;
+      font-size:26px;
+      line-height:1.35;
+      font-weight:900;
+      letter-spacing:-1.4px;
+    }
+
+    .slogan b{color:var(--red)}
+    .sub{
+      margin-top:12px;
+      font-size:15px;
+      color:#444;
+      letter-spacing:-.3px;
+    }
+
+    .card{
+      margin:-92px 18px 0;
+      padding:22px;
+      border-radius:30px;
+      background:rgba(255,255,255,.96);
+      box-shadow:var(--shadow);
+      position:relative;
+      z-index:2;
+    }
+
+    .profile{
+      display:flex;
+      gap:20px;
+      align-items:center;
+    }
+
+    .avatar{
+      width:116px;height:116px;
+      border-radius:50%;
+      background:linear-gradient(145deg,#f8f8f8,#e8e8e8);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      border:1px solid #eee;
+      flex:0 0 auto;
+    }
+
+    .avatar svg{width:96px;height:96px}
+
+    .role{
+      color:var(--red);
+      font-size:16px;
+      font-weight:900;
+      margin-bottom:6px;
+    }
+
+    .name{
+      font-size:34px;
+      font-weight:950;
+      letter-spacing:4px;
+      margin-bottom:8px;
+    }
+
+    .office{
+      font-size:17px;
+      color:#333;
+      margin-bottom:12px;
+      font-weight:700;
+    }
+
+    .bar{
+      width:44px;height:4px;background:var(--red);
+      border-radius:10px;margin:10px 0 14px;
+    }
+
+    .desc{
+      font-size:15px;
+      line-height:1.55;
+      color:#555;
+    }
+
+    .badge{
+      margin-top:18px;
+      padding:14px 16px;
+      background:#fff;
+      border:1px solid #eee;
+      border-radius:18px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .badge-icon{
+      width:42px;height:42px;border-radius:14px;
+      background:var(--light-red);
+      display:flex;align-items:center;justify-content:center;
+      color:var(--red);
+      font-size:24px;
+      flex:0 0 auto;
+    }
+
+    .badge strong{
+      color:var(--red);
+      display:block;
+      margin-bottom:4px;
+    }
+
+    .buttons{
+      padding:22px 18px 10px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    .btn{
+      text-decoration:none;
+      color:var(--ink);
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:17px 14px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      box-shadow:0 8px 20px rgba(0,0,0,.06);
+      min-height:82px;
+    }
+
+    .btn .ico{
+      width:42px;height:42px;border-radius:14px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:22px;
+      flex:0 0 auto;
+    }
+
+    .btn .label{font-size:16px;font-weight:900;margin-bottom:3px}
+    .btn .value{font-size:13px;color:var(--muted);word-break:break-all}
+    .red .ico{background:#ffecec;color:var(--red)}
+    .yellow .ico{background:#fff4b8;color:#111}
+    .green .ico{background:#eaf8ef;color:var(--green)}
+    .blue .ico{background:#eaf2ff;color:var(--blue)}
+
+    .section{
+      padding:18px;
+    }
+
+    .cta{
+      padding:20px;
+      border-radius:24px;
+      background:linear-gradient(135deg,#fff5f5,#ffffff);
+      border:1px solid #ffe0e0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+
+    .cta h2{
+      margin:0 0 8px;
+      font-size:20px;
+      letter-spacing:-.8px;
+    }
+
+    .cta p{
+      margin:0;
+      color:#555;
+      font-size:14px;
+      line-height:1.45;
+    }
+
+    .cta .heart{
+      width:78px;height:78px;border-radius:50%;
+      background:linear-gradient(145deg,#ff7474,var(--red));
+      display:flex;align-items:center;justify-content:center;
+      color:#fff;font-size:38px;
+      flex:0 0 auto;
+    }
+
+    .service-title{
+      text-align:center;
+      font-size:18px;
+      font-weight:950;
+      margin:8px 0 16px;
+    }
+
+    .services{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:12px;
+    }
+
+    .service{
+      padding:18px 12px;
+      border-radius:18px;
+      background:#fff;
+      border:1px solid var(--line);
+      text-align:center;
+    }
+
+    .service .icon{font-size:28px;margin-bottom:8px;color:var(--red)}
+    .service strong{display:block;font-size:15px}
+    .service span{display:block;font-size:12px;color:#666;margin-top:4px}
+
+    .note{
+      margin:8px 18px 92px;
+      padding:16px;
+      border-radius:18px;
+      background:#fff;
+      border:1px solid var(--line);
+      color:#555;
+      line-height:1.55;
+      font-size:13px;
+    }
+
+    .bottom{
+      position:fixed;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:0;
+      width:min(430px,100%);
+      background:linear-gradient(180deg,var(--red),var(--deep-red));
+      color:#fff;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      padding:14px 6px 18px;
+      z-index:20;
+      box-shadow:0 -10px 20px rgba(0,0,0,.08);
+    }
+
+    .bottom a{
+      color:#fff;
+      text-decoration:none;
+      text-align:center;
+      font-size:12px;
+      line-height:1.3;
+    }
+
+    .bottom .bico{
+      font-size:24px;
+      display:block;
+      margin-bottom:5px;
+    }
+
+    @media (max-width:380px){
+      .profile{gap:14px}
+      .avatar{width:96px;height:96px}
+      .name{font-size:28px}
+      .slogan{font-size:23px}
+      .buttons{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="phone">
+    <section class="hero">
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <div>KOREA <span style="color:#111">POST</span></div>
+      </div>
+
+      <div class="slogan">
+        고객의 <b>오늘</b>을 지키고<br/>
+        <b>내일의 행복</b>을 준비합니다
+      </div>
+      <div class="sub">우체국 보험 · 예금 상담</div>
+    </section>
+
+    <section class="card">
+      <div class="profile">
+        <div class="avatar" aria-label="프로필 이미지">
+          <!-- 기본 프로필 일러스트 -->
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="58" fill="#f4f4f4"/>
+            <circle cx="60" cy="43" r="24" fill="#222"/>
+            <path d="M28 105c4-25 19-38 32-38s28 13 32 38" fill="#1b2b45"/>
+            <circle cx="60" cy="48" r="20" fill="#ffd9c2"/>
+            <path d="M42 43c8-18 29-23 43-5-1-16-12-28-29-28-15 0-27 12-27 29 5-3 9-2 13 4z" fill="#111"/>
+            <path d="M46 58c8 8 20 8 28 0" stroke="#9b4b3d" stroke-width="3" stroke-linecap="round"/>
+            <path d="M40 111h40l-8-29H48l-8 29z" fill="#ffffff"/>
+            <path d="M49 82l11 12 11-12" fill="#c90000"/>
+          </svg>
+        </div>
+
+        <div>
+          <div class="role">우체국FC</div>
+          <div class="name">백남준</div>
+          <div class="office">장흥우체국</div>
+          <div class="bar"></div>
+          <div class="desc">우체국 보험, 예금<br/>고객님의 든든한 미래를 함께 준비합니다.</div>
+        </div>
+      </div>
+
+      <div class="badge">
+        <div class="badge-icon">🛡️</div>
+        <div>
+          <strong>우체국 보험 · 예금</strong>
+          <span>안정적인 금융상담을 도와드립니다.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="buttons">
+      <a class="btn red" href="tel:01000000000">
+        <div class="ico">☎</div>
+        <div>
+          <div class="label">전화하기</div>
+          <div class="value">010-0000-0000</div>
+        </div>
+      </a>
+
+      <a class="btn yellow" href="#" onclick="alert('카카오톡 상담 링크를 나중에 연결하세요.'); return false;">
+        <div class="ico">💬</div>
+        <div>
+          <div class="label">카카오톡 상담</div>
+          <div class="value">추후 연결</div>
+        </div>
+      </a>
+
+      <a class="btn green" href="https://map.naver.com/p/search/%EC%9E%A5%ED%9D%A5%EC%9D%8D%20%EB%8C%80%EB%8C%80%EB%A1%9C939" target="_blank" rel="noopener">
+        <div class="ico">📍</div>
+        <div>
+          <div class="label">위치 보기</div>
+          <div class="value">장흥읍 대대로939</div>
+        </div>
+      </a>
+
+      <a class="btn blue" href="sms:01000000000">
+        <div class="ico">✉</div>
+        <div>
+          <div class="label">문자 보내기</div>
+          <div class="value">SMS 보내기</div>
+        </div>
+      </a>
+    </section>
+
+    <section class="section">
+      <div class="cta">
+        <div>
+          <h2>지금 바로 상담해보세요</h2>
+          <p>보험과 예금, 고객님의 상황에 맞춰 친절히 안내드립니다.</p>
+        </div>
+        <div class="heart">♥</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="service-title">주요 상담 분야</div>
+      <div class="services">
+        <div class="service">
+          <div class="icon">🛡️</div>
+          <strong>우체국 보험</strong>
+          <span>보장성 보험 상담</span>
+        </div>
+        <div class="service">
+          <div class="icon">💰</div>
+          <strong>우체국 예금</strong>
+          <span>안정적인 자산관리</span>
+        </div>
+        <div class="service">
+          <div class="icon">👵</div>
+          <strong>노후 준비</strong>
+          <span>연금·미래 설계</span>
+        </div>
+        <div class="service">
+          <div class="icon">📊</div>
+          <strong>재무 상담</strong>
+          <span>목적자금 계획</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="note">
+      ※ 본 디지털명함은 상담 연결을 위한 안내 페이지입니다. 상품 가입 및 세부 상담은 담당자와 직접 확인해 주세요.
+    </div>
+
+    <nav class="bottom">
+      <a href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AFN:%EB%B0%B1%EB%82%A8%EC%A4%80%0AORG:%EC%9E%A5%ED%9D%A5%EC%9A%B0%EC%B2%B4%EA%B5%AD%0ATEL:01000000000%0AEND:VCARD" download="baek-namjun.vcf">
+        <span class="bico">💾</span>연락처<br/>저장
+      </a>
+      <a href="#" onclick="alert('QR코드는 GitHub Pages 링크가 만들어진 뒤 생성하면 됩니다.'); return false;">
+        <span class="bico">▣</span>QR<br/>코드
+      </a>
+      <a href="#" onclick="navigator.share ? navigator.share({title:'백남준 우체국FC', text:'우체국 보험, 예금 상담', url:location.href}) : alert('링크를 복사해 공유하세요.'); return false;">
+        <span class="bico">↗</span>링크<br/>공유
+      </a>
+      <a href="#" onclick="alert('브라우저 메뉴에서 홈 화면에 추가를 선택하세요.'); return false;">
+        <span class="bico">☆</span>홈화면<br/>추가
+      </a>
+    </nav>
+  </main>
+</body>
+</html>
